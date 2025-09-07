@@ -57,7 +57,6 @@ jobs:
           mkdir -p /tmp/ff
           cd /tmp/ff
           curl https://ffmpeg.org/releases/ffmpeg-${{ needs.build-or-not.outputs.ff }}.tar.xz | tar --strip-components=1 -xJf -
-          cd ff
           bash ${{ github.workspace }}/patch-ffmpegorg-chromium.sh ffmpegorg
           MAKEFLAGS=-j4 bash ${{ github.workspace }}/build.sh ${{ matrix.target }}
           mv ${{ matrix.soname }} ${{ matrix.soname }}.${{ needs.build-or-not.outputs.avcodec }}
